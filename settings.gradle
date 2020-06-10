@@ -1,0 +1,3 @@
+rootProject.name='Android appYuser Tracker'
+include ':app'
+include ':androidappyusertrackerlibrary'
