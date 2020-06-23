@@ -30,7 +30,34 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation("com.squareup.okhttp3:okhttp:4.4.0")
-
     api 'org.aspectj:aspectjrt:1.9.5'
 }
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'android-appyuser-tracker'
+
+    publishedGroupId = 'eu.quadran.appyuser'
+    libraryName = 'android-appyuser-tracker'
+    artifact = 'android-appyuser-tracker'
+
+    libraryDescription = 'AppYuser Tracker for Android'
+
+    siteUrl = 'https://github.com/QuadranIT/Android-appYuser-Tracker-V2'
+    gitUrl = 'https://github.com/QuadranIT/Android-appYuser-Tracker-V2'
+
+    libraryVersion = '0.0.32'
+
+    organization = 'quadran'
+    developerId = 'Fadi'
+    developerName = 'Fadi AMMAR'
+    developerEmail = 'fadi.ammar@quadran.eu'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+//These two remote files contain Bintray configuration as described above.
+apply from: 'https://raw.githubusercontent.com/quangctkm9207/template-files/master/android/gradle/install.gradle'
+apply from: 'https://raw.githubusercontent.com/quangctkm9207/template-files/master/android/gradle/bintray.gradle'

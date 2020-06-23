@@ -1,8 +1,10 @@
-package eu.quadran.androidappyusertrackerlibrary;
+package eu.quadran.androidappyusertrackerlibrary.utils;
 
 import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.os.Build;
+
+import eu.quadran.androidappyusertrackerlibrary.BuildConfig;
 
 public class Info {
 

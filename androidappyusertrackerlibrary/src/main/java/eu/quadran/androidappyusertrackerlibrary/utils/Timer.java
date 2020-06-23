@@ -1,4 +1,4 @@
-package eu.quadran.androidappyusertrackerlibrary;
+package eu.quadran.androidappyusertrackerlibrary.utils;
 
 import java.util.concurrent.TimeUnit;
 

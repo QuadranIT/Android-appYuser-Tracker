@@ -1,10 +1,16 @@
 package eu.quadran.androidappyusertrackerlibrary;
 
+import eu.quadran.androidappyusertrackerlibrary.network.RequestHandler;
+import eu.quadran.androidappyusertrackerlibrary.utils.Timer;
+import eu.quadran.androidappyusertrackerlibrary.utils.Info;
+
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
 import android.os.Bundle;
 
 import java.io.IOException;
+
 
 public class Tracker implements Application.ActivityLifecycleCallbacks {
 
