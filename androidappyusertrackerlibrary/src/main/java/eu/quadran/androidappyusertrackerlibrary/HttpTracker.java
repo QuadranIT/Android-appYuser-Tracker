@@ -1,5 +1,7 @@
 package eu.quadran.androidappyusertrackerlibrary;
 
+import android.util.Log;
+
 import eu.quadran.androidappyusertrackerlibrary.network.RequestHandler;
 import eu.quadran.androidappyusertrackerlibrary.utils.Timer;
 import eu.quadran.androidappyusertrackerlibrary.utils.Info;
@@ -14,6 +16,8 @@ import java.io.IOException;
 
 @Aspect
 public class HttpTracker {
+
+    private static final String TAG = "Httptracker";
 
     private RequestHandler requestHandler = new RequestHandler();
     private Timer timer = new Timer();
@@ -42,7 +46,9 @@ public class HttpTracker {
     public void startOkHttpTimer(){
         try {
             timer.startTimer();
-        } finally {}
+        } catch (Exception e){
+            Log.e(TAG, "error : " + e);
+        }
     }
 
     public void stopOkHttpTimer(JoinPoint joinPoint) throws IOException {
@@ -63,7 +69,9 @@ public class HttpTracker {
             className = extractClassName(methodSignature.getDeclaringType().getName());
             requestHandler.sendAjax(className, targetUrl, info, timer);
 
-        } finally {}
+        } catch (Exception e){
+            Log.e(TAG, "error : " + e);
+        }
     }
 
     public String extractClassName(String name){

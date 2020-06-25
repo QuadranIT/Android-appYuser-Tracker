@@ -5,18 +5,20 @@ import eu.quadran.androidappyusertrackerlibrary.utils.Info;
 import eu.quadran.androidappyusertrackerlibrary.Tracker;
 
 import android.app.Activity;
+import android.util.Log;
+
 import java.io.IOException;
 
 public class RequestHandler {
 
-    //OkHttpClient httpClient = new OkHttpClient();
+    private static final String TAG = "RequestHandler";
+
     Tracker tracker = Tracker.getInstance();
 
     String url = "";
     String applicationID = "";
 
-    public RequestHandler() {
-    }
+    public RequestHandler() {}
 
     public void send(Activity activity, Info info, Timer timer, String applicationID, String startup) throws IOException {
 
@@ -75,31 +77,15 @@ public class RequestHandler {
     public void process(String parameters) throws IOException {
 
         url = "https://cloudflare-app.quadran.eu/qwa/log.php?" + parameters; //TODO : change domain to tracker.quadran.eu
-
-        //OKHTTP
-//        Request request = new Request.Builder()
-//                .url(url)
-//                .build();
-//        httpClient.newCall(request).execute();
-
         try {
             new HttpRequestTask(
                     new HttpRequest(url, HttpRequest.GET),
                     new HttpRequest.Handler() {
                         @Override
-                        public void response(HttpResponse response) {
-                            if (response.code == 200) {
-                                //Code goes here
-                                System.out.println("success");
-                            } else {
-                                //Code goes here
-                                System.out.println("error");
-                            }
-                        }
+                        public void response(HttpResponse response) {}
                     }).execute();
         } catch (Exception e){
-            System.out.println("error : " + e);
+            Log.e(TAG, "error : " + e);
         }
-
     }
 }
