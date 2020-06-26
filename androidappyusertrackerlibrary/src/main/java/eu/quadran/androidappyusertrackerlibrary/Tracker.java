@@ -4,10 +4,16 @@ import eu.quadran.androidappyusertrackerlibrary.network.RequestHandler;
 import eu.quadran.androidappyusertrackerlibrary.utils.Timer;
 import eu.quadran.androidappyusertrackerlibrary.utils.Info;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.widget.Toast;
+
+import androidx.core.content.ContextCompat;
 
 import java.io.IOException;
 
@@ -18,7 +24,7 @@ public class Tracker implements Application.ActivityLifecycleCallbacks {
 
     private RequestHandler requestHandler = new RequestHandler();
     private Timer timer = new Timer();
-    private Info info = new Info();
+    private Info info = new Info(true);
 
     private boolean applicationInitFlag = false; // Cold startTimer flag
     private boolean activityCreatedFlag = false; // Warm startTimer flag
@@ -27,12 +33,17 @@ public class Tracker implements Application.ActivityLifecycleCallbacks {
     private int activeActivities = 0;
 
     private static final Tracker ourInstance = new Tracker();
+
     public static Tracker getInstance() {
         return ourInstance;
     }
-    private Tracker() {}
+
+    private Tracker() {
+    }
 
     public void init(Application application, String appID) {
+        if (!checkInternetPermission(application)) info.setInternetPermission(false);
+
         // Cold startup
         timer.startTimer();
 
@@ -42,8 +53,13 @@ public class Tracker implements Application.ActivityLifecycleCallbacks {
         application.registerActivityLifecycleCallbacks(this);
     }
 
-    public String getApplicationID(){return applicationID;}
-    public void setApplicationID(String applicationID){this.applicationID = applicationID;}
+    public String getApplicationID() {
+        return applicationID;
+    }
+
+    public void setApplicationID(String applicationID) {
+        this.applicationID = applicationID;
+    }
 
     @Override
     public void onActivityCreated(Activity activity, Bundle bundle) {
@@ -131,5 +147,9 @@ public class Tracker implements Application.ActivityLifecycleCallbacks {
     @Override
     public void onActivityDestroyed(Activity activity) {
 
+    }
+
+    public boolean checkInternetPermission(Application application){
+        return ContextCompat.checkSelfPermission(application, Manifest.permission.INTERNET) == PackageManager.PERMISSION_GRANTED;
     }
 }

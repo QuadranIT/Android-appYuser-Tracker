@@ -13,6 +13,11 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+//import com.squareup.okhttp.Callback;
+//import com.squareup.okhttp.OkHttpClient;
+//import com.squareup.okhttp.Request;
+//import com.squareup.okhttp.Response;
+
 import java.io.IOException;
 
 import okhttp3.Call;
@@ -32,18 +37,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Displaying default okhttp request
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-
-        StrictMode.setThreadPolicy(policy);
-        String response = "";
-        try {
-            response = sendGETSync();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        TextView textView = (TextView) findViewById(R.id.textView3);
-        textView.setText(response.substring(0,500) + "...");
+//        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+//
+//        StrictMode.setThreadPolicy(policy);
+//        String response = "";
+//        try {
+//            response = sendGETSync();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        TextView textView = (TextView) findViewById(R.id.textView3);
+//        textView.setText(response.substring(0,500) + "...");
 
         //System.out.println(power(2));
     }
@@ -59,18 +64,18 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private String sendGETSync() throws IOException{
 
-        Request request = new Request.Builder()
-                .url("https://world.openfoodfacts.org/api/v0/product/737628064502.json")
-                .build();
-
-        try (Response response = httpClient.newCall(request).execute()) {
-            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-            return response.body().string();
-        }
-        catch (Exception e){
-            throw new IOException("Unexpected error : " + e.getMessage());
-        }
-
+//        Request request = new Request.Builder()
+//                .url("https://world.openfoodfacts.org/api/v0/product/737628064502.json")
+//                .build();
+//
+//        try (Response response = httpClient.newCall(request).execute()) {
+//            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+//            return response.body().string();
+//        }
+//        catch (Exception e){
+//            throw new IOException("Unexpected error : " + e.getMessage());
+//        }
+    return "";
     }
 
     void doGetRequest(String url) throws IOException{
@@ -80,6 +85,28 @@ public class MainActivity extends AppCompatActivity {
 
         httpClient.newCall(request)
                 .enqueue(new Callback() {
+                    //Old Http
+//                    @Override
+//                    public void onFailure(Request request, IOException e) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onResponse(Response response) throws IOException {
+//                        String res = response.body().string();
+//
+//                        final Context context = getApplicationContext();
+//                        final CharSequence text = res.substring(0,50) + "...";
+//                        final int duration = Toast.LENGTH_SHORT;
+//
+//                        MainActivity.this.runOnUiThread(new Runnable() {
+//                            public void run() {
+//                                Toast toast = Toast.makeText(context, text, duration);
+//                                toast.show();
+//                            }
+//                        });
+//                    }
+                    //New Http
                     @Override
                     public void onFailure(final Call call, IOException e) {
                         runOnUiThread(new Runnable() {
@@ -108,6 +135,8 @@ public class MainActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void makeRequest(View view) throws IOException {
-        doGetRequest("https://world.openfoodfacts.org/api/v0/product/737628064502.json");
+        //doGetRequest("https://world.openfoodfacts.org/api/v0/product/737628064502.json");
+        //doGetRequest("https://world.openfoodfacts.org/api/v0/product/8480017087232.json");
+        doGetRequest("https://world.openfoodfacts.org/api/v0/product/26006314.json");
     }
 }

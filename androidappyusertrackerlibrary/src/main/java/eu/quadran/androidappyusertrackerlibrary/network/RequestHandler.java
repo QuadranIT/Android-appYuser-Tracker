@@ -4,8 +4,12 @@ import eu.quadran.androidappyusertrackerlibrary.utils.Timer;
 import eu.quadran.androidappyusertrackerlibrary.utils.Info;
 import eu.quadran.androidappyusertrackerlibrary.Tracker;
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.util.Log;
+
+import androidx.core.content.ContextCompat;
 
 import java.io.IOException;
 
@@ -18,7 +22,8 @@ public class RequestHandler {
     String url = "";
     String applicationID = "";
 
-    public RequestHandler() {}
+    public RequestHandler() {
+    }
 
     public void send(Activity activity, Info info, Timer timer, String applicationID, String startup) throws IOException {
 
@@ -43,7 +48,7 @@ public class RequestHandler {
                 "&android=true" +
                 "&";
 
-        process(parameters);
+        process(parameters, info);
     }
 
     public void sendAjax(String className, String url, Info info, Timer timer) throws IOException {
@@ -71,21 +76,27 @@ public class RequestHandler {
                 "&android=true" +
                 "&";
 
-        process(parameters);
+        process(parameters, info);
     }
 
-    public void process(String parameters) throws IOException {
+    public void process(String parameters, Info info) {
 
-        url = "https://cloudflare-app.quadran.eu/qwa/log.php?" + parameters; //TODO : change domain to tracker.quadran.eu
-        try {
-            new HttpRequestTask(
-                    new HttpRequest(url, HttpRequest.GET),
-                    new HttpRequest.Handler() {
-                        @Override
-                        public void response(HttpResponse response) {}
-                    }).execute();
-        } catch (Exception e){
-            Log.e(TAG, "error : " + e);
+        if (info.isInternetPermission()) {
+            url = "https://cloudflare-app.quadran.eu/qwa/log.php?" + parameters; //TODO : change domain to tracker.quadran.eu
+            try {
+                new HttpRequestTask(
+                        new HttpRequest(url, HttpRequest.GET),
+                        new HttpRequest.Handler() {
+                            @Override
+                            public void response(HttpResponse response) {
+                            }
+                        }).execute();
+            } catch (Exception e) {
+                Log.e(TAG, "error : " + e);
+            }
+        }
+        else{
+            Log.e(TAG, "Internet permission missing. Please add internet permission in your AndroidManifest.xml file.");
         }
     }
 }

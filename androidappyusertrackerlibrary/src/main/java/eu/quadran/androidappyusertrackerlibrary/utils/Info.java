@@ -8,6 +8,12 @@ import eu.quadran.androidappyusertrackerlibrary.BuildConfig;
 
 public class Info {
 
+    public Info(boolean internetPermission) {
+        this.internetPermission = internetPermission;
+    }
+
+    boolean internetPermission;
+
     public String getPackageName(Activity activity) { return activity.getApplicationContext().getPackageName(); }
 
     public String getActivityName(Activity activity){
@@ -64,6 +70,10 @@ public class Info {
         }
         return String.valueOf(freeSize);
     }
+
+    public boolean isInternetPermission() {return internetPermission;}
+
+    public void setInternetPermission(boolean internetPermission) {this.internetPermission = internetPermission;}
 
     public String getNetworkInformation(Activity activity){
         // TODO : Getting network types w/out permission ?

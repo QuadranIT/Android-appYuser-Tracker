@@ -12,13 +12,13 @@ import android.widget.TextView;
 
 import java.io.IOException;
 
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+//import okhttp3.OkHttpClient;
+//import okhttp3.Request;
+//import okhttp3.Response;
 
 public class NextActivity extends AppCompatActivity {
 
-    private final OkHttpClient httpClient = new OkHttpClient();
+//    private final OkHttpClient httpClient = new OkHttpClient();
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -28,18 +28,18 @@ public class NextActivity extends AppCompatActivity {
 
 
         //Displaying default okhttp request
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-
-        StrictMode.setThreadPolicy(policy);
-        String response = "";
-        try {
-            response = sendGETSync();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        TextView textView = (TextView) findViewById(R.id.textView4);
-        textView.setText(response.substring(0,500) + "...");
+//        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+//
+//        StrictMode.setThreadPolicy(policy);
+//        String response = "";
+//        try {
+//            response = sendGETSync();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        TextView textView = (TextView) findViewById(R.id.textView4);
+//        textView.setText(response.substring(0,500) + "...");
     }
 
 
@@ -53,23 +53,23 @@ public class NextActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private String sendGETSync() throws IOException{
 
-        Request request = new Request.Builder()
-                .url("https://world.openfoodfacts.org/api/v0/product/737628064502.json")
-                .build();
-
-        try (Response response = httpClient.newCall(request).execute()) {
-
-            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-
-            // Get response body
-
-            return response.body().string();
-
-            // product.ingredients_text_with_allergens_en
-        }
-        catch (Exception e){
-            throw new IOException("Unexpected error : " + e.getMessage());
-        }
-
+//        Request request = new Request.Builder()
+//                .url("https://world.openfoodfacts.org/api/v0/product/737628064502.json")
+//                .build();
+//
+//        try (Response response = httpClient.newCall(request).execute()) {
+//
+//            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+//
+//            // Get response body
+//
+//            return response.body().string();
+//
+//            // product.ingredients_text_with_allergens_en
+//        }
+//        catch (Exception e){
+//            throw new IOException("Unexpected error : " + e.getMessage());
+//        }
+    return "";
     }
 }
