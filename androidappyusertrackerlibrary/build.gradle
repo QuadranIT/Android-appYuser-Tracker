@@ -46,7 +46,7 @@ ext {
     siteUrl = 'https://github.com/QuadranIT/Android-appYuser-Tracker-V2'
     gitUrl = 'https://github.com/QuadranIT/Android-appYuser-Tracker-V2'
 
-    libraryVersion = '0.0.32'
+    libraryVersion = '0.0.37'
 
     organization = 'quadran'
     developerId = 'Fadi'

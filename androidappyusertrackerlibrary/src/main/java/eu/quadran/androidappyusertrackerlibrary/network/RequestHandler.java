@@ -4,12 +4,8 @@ import eu.quadran.androidappyusertrackerlibrary.utils.Timer;
 import eu.quadran.androidappyusertrackerlibrary.utils.Info;
 import eu.quadran.androidappyusertrackerlibrary.Tracker;
 
-import android.Manifest;
 import android.app.Activity;
-import android.content.pm.PackageManager;
 import android.util.Log;
-
-import androidx.core.content.ContextCompat;
 
 import java.io.IOException;
 
@@ -96,7 +92,7 @@ public class RequestHandler {
             }
         }
         else{
-            Log.e(TAG, "Internet permission missing. Please add internet permission in your AndroidManifest.xml file.");
+            Log.e(TAG, "Internet permission is missing. Please add permission to your AndroidManifest.xml file.");
         }
     }
 }

@@ -7,13 +7,8 @@ import eu.quadran.androidappyusertrackerlibrary.utils.Info;
 import android.Manifest;
 import android.app.Activity;
 import android.app.Application;
-import android.content.Context;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.widget.Toast;
-
-import androidx.core.content.ContextCompat;
 
 import java.io.IOException;
 
@@ -149,7 +144,7 @@ public class Tracker implements Application.ActivityLifecycleCallbacks {
 
     }
 
-    public boolean checkInternetPermission(Application application){
-        return ContextCompat.checkSelfPermission(application, Manifest.permission.INTERNET) == PackageManager.PERMISSION_GRANTED;
+    public boolean checkInternetPermission(Application application) {
+        return (application.checkCallingOrSelfPermission(Manifest.permission.INTERNET) == PackageManager.PERMISSION_GRANTED);
     }
 }
