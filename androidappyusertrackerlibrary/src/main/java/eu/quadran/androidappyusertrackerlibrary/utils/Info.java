@@ -7,11 +7,15 @@ import eu.quadran.androidappyusertrackerlibrary.BuildConfig;
 
 public class Info {
 
+    boolean internetPermission;
+
     public Info(boolean internetPermission) {
         this.internetPermission = internetPermission;
     }
 
-    boolean internetPermission;
+    public boolean isInternetPermission() {return internetPermission;}
+
+    public void setInternetPermission(boolean internetPermission) {this.internetPermission = internetPermission;}
 
     public String getPackageName(Activity activity) { return activity.getApplicationContext().getPackageName(); }
 
@@ -68,14 +72,5 @@ public class Info {
             e.printStackTrace();
         }
         return String.valueOf(freeSize);
-    }
-
-    public boolean isInternetPermission() {return internetPermission;}
-
-    public void setInternetPermission(boolean internetPermission) {this.internetPermission = internetPermission;}
-
-    public String getNetworkInformation(Activity activity){
-        // TODO : Getting network types w/out permission ?
-        return "";
     }
 }

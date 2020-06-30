@@ -30,7 +30,6 @@ public class RequestHandler {
                 "&owa_cv1=isfl%3Dfalse" +
                 "&ttl=" + Double.valueOf(timer.getTotalTimeMillis()) +
                 "&owa_site_id=" + applicationID +
-                //METADATA
                 "&owa_os=" + info.getOSType() +
                 "&owa_osv=" + info.getOSVersion() +
                 "&owa_sdk=" + info.getSDKVersion() +
@@ -59,7 +58,6 @@ public class RequestHandler {
                 "&owa_cv10=ajax%3Dtrue" +
                 "&ttl=" + Double.valueOf(timer.getTotalTimeMillis()) +
                 "&owa_site_id=" + applicationID +
-                //METADATA
                 "&owa_os=" + info.getOSType() +
                 "&owa_osv=" + info.getOSVersion() +
                 "&owa_sdk=" + info.getSDKVersion() +
@@ -78,7 +76,7 @@ public class RequestHandler {
     public void process(String parameters, Info info) {
 
         if (info.isInternetPermission()) {
-            url = "https://cloudflare-app.quadran.eu/qwa/log.php?" + parameters; //TODO : change domain to tracker.quadran.eu
+            url = "https://tracker.quadran.eu/qwa/log.php?" + parameters;
             try {
                 new HttpRequestTask(
                         new HttpRequest(url, HttpRequest.GET),

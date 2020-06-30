@@ -11,36 +11,8 @@ public class Timer {
 
     public Timer() {}
 
-    public long getStartTime() {
-        return startTime;
-    }
-
-    public long getEndTime() {
-        return endTime;
-    }
-
-    public long getElapsedTime() {
-        return elapsedTime;
-    }
-
     public long getTimestamp() {
         return timestamp;
-    }
-
-    public void setStartTime(long startTime) {
-        this.startTime = startTime;
-    }
-
-    public void setEndTime(long endTime) {
-        this.endTime = endTime;
-    }
-
-    public void setElapsedTime(long elapsedTime) {
-        this.elapsedTime = elapsedTime;
-    }
-
-    public void setTimeStamp(long timestamp) {
-        this.timestamp = timestamp;
     }
 
     private void resetTimer() {

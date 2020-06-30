@@ -43,10 +43,10 @@ ext {
 
     libraryDescription = 'AppYuser Tracker for Android'
 
-    siteUrl = 'https://github.com/QuadranIT/Android-appYuser-Tracker-V2'
-    gitUrl = 'https://github.com/QuadranIT/Android-appYuser-Tracker-V2'
+    siteUrl = 'https://github.com/QuadranIT/Android-appYuser-Tracker'
+    gitUrl = 'https://github.com/QuadranIT/Android-appYuser-Tracker'
 
-    libraryVersion = '0.0.37'
+    libraryVersion = '1.0.0'
 
     organization = 'quadran'
     developerId = 'Fadi'
